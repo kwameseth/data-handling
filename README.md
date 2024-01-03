@@ -3,7 +3,7 @@ Simple web application that uses JS to handle data
 
 
 ## choice of color
-- #83A2FF (Blue)           : Text / Button
+- #83A2FF / #3666f5 (Blue) : Text / Button
 - #B4BDFF (light Blue)     : Button 
 - #FFE3BB (Biege)          : Background color
 - #FFD28F (Dark Biege)     : Background / Border effect
