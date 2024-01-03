@@ -9,4 +9,4 @@ Simple web application that uses JS to handle data
 - #FFD28F (Dark Biege)     : Background / Border effect
 
 ## Layout image of the project
-[url](./layout_images/project_image)
+!["Project Image"](https://github.com/kwameseth/data-handling/blob/main/layout_images/project_image.png)
