@@ -107,25 +107,20 @@ footer {
         margin: 0 auto;
         margin-bottom: 20px; 
      }
+     @media only screen and (max-width: 414px) {
+        h1 {
+            font-size: 23px;
+      }
+      .form {
+        width: 127%;
+        margin: 0 auto;
+        margin-bottom: 20px; 
+     }
      #input-form{
         width: 14rem;
         margin-right: 20px;
      }
   }
-  @media only screen and (max-width: 360px) {
-    h1 {
-        font-size: 25px;
-    }
-  }
-  .form {
-    width: 125%;
-    margin: 0 auto;
-    margin-bottom: 20px; 
- }
- #input-form{
-    width: 11rem;
-    margin-right: 20px;
- }
  @media only screen and (max-width: 384px) {
     h1 {
         font-size: 26px;
@@ -146,3 +141,18 @@ footer {
     margin: 0 auto;
     margin-bottom: 20px; 
  }
+ @media only screen and (max-width: 360px) {
+    h1 {
+        font-size: 25px;
+    }
+  }
+  .form {
+    width: 125%;
+    margin: 0 auto;
+    margin-bottom: 20px; 
+ }
+ #input-form{
+    width: 11rem;
+    margin-right: 20px;
+ }
+}
