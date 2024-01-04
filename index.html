@@ -14,14 +14,13 @@
         <h1>Workers Data Web Portal</h1>
 
 
-
         <!-- heading h2 here -->
         <h2>Registration Form</h2>
 
         <div class="form">
 
            <!-- input form here using span for the input field and save button. Give the input form and button different ids -->
-          <span><input id="input-form" type="text"></span><span><button id="btn" onclick="seth()">Save</button></span>
+          <span><input id="input-form" type="text"></span><span><button id="btn">Save</button></span>
            
         </div>
 
@@ -30,7 +29,10 @@
         <!-- heading h2 here -->
         <h2 id="workers-data-title">Workers Data List</h2>
         <div id="workers-data-list">
-
+            <span style="display:inline;">
+                <ol>
+                </ol> 
+            </span>      
         </div>
         <hr>
 
@@ -41,7 +43,7 @@
 
     </div>
     
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>
