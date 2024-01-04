@@ -76,3 +76,53 @@ footer {
     cursor: pointer;
 }
 
+/*Media Queries*/
+@media only screen and (max-width: 835px) {
+    h1 {
+        font-size: 45px;
+    }
+  }
+  @media only screen and (max-width: 626px) {
+    h1 {
+        font-size: 45px;
+    }
+  }
+  #input-form{
+    width: 16rem;
+    height: 23px;
+  }
+  #btn{
+    width: 4rem;
+    height: 38px;
+    
+  }
+ 
+  @media only screen and (max-width: 584px) {
+    h1 {
+        font-size: 41px;
+    }
+
+    .form {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 20px; 
+     }
+     #input-form{
+        width: 14rem;
+        margin-right: 20px;
+     }
+  }
+  @media only screen and (max-width: 360px) {
+    h1 {
+        font-size: 25px;
+    }
+  }
+  .form {
+    width: 125%;
+    margin: 0 auto;
+    margin-bottom: 20px; 
+ }
+ #input-form{
+    width: 11rem;
+    margin-right: 20px;
+ }
