@@ -10,3 +10,4 @@ Simple web application that uses JS to handle data
 
 ## Layout image of the project
 !["Project Image"](https://github.com/kwameseth/data-handling/blob/main/layout_images/project_image.png)
+ 
