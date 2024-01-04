@@ -66,6 +66,27 @@ h2 {
     background-color: #0944f3;
 }
 
+#workers-data-list {
+    margin-bottom: 10px;
+}
+
+.btn-delete {
+    width: 70px;
+    padding: 7px 15px !important;
+    border-radius: 5px;
+    color:#fff;
+    background-color: red;
+    border: none;
+}
+.btn-update {
+    width: 70px;
+    padding: 7px 15px !important;
+    border-radius: 5px;
+    color:#fff;
+    background-color: rgb(18, 185, 149);
+    border: none;
+}
+
 footer {
     text-align: center;
     margin-top: 10px;
