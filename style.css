@@ -126,3 +126,23 @@ footer {
     width: 11rem;
     margin-right: 20px;
  }
+ @media only screen and (max-width: 384px) {
+    h1 {
+        font-size: 26px;
+    }
+  }
+  .form {
+    width: 127%;
+    margin: 0 auto;
+    margin-bottom: 20px; 
+ }
+ @media only screen and (max-width: 361px) {
+    h1 {
+        font-size: 25px;
+    }
+  }
+  .form {
+    width: 127%;
+    margin: 0 auto;
+    margin-bottom: 20px; 
+ }
