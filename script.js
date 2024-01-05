@@ -45,11 +45,18 @@ function deleteMe (btnstate) {
 
     console.log(nameStoreValueItemToCheck);
     let lala = nameStore.indexOf(nameStoreValueItemToCheck);
-    console.log("lala index: "+lala);
-    nameStore.splice(lala, 1);
-
+    for (i = 0; i < nameStore.length; i++){
+        if(nameStore[i] == lala){
+            console.log("lala index: "+lala);
+            nameStore.splice(lala, 0);
+            break;
+        }
+        // else if(nameStore.length - 1 == lala){
+        //     nameStore.pop();
+        // }
+        
+    }
     
-
     console.log(nameStore);
 
     for(i = 0; i < nameStore.length; i++){
@@ -74,7 +81,10 @@ function deleteMe (btnstate) {
     //         console.log(nameStore);
     //     }
     // }
+    console.log("final nameStore: " +nameStore);
 }
+
+
 
 
 
