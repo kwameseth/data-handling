@@ -1,9 +1,9 @@
 let inputForm = $('#input-form');
-let clearBtn = $('#btn-clear');
+
 
 const inputFormBtn = $('#btn');
 let nameStore = [];
-console.log(clearBtn);
+
 
 let visibilityText = $('.visi');
 
@@ -24,11 +24,9 @@ inputFormBtn.on("click", function (){
 }
 });
 
-clearBtn.on("click", function(e){
-    console.log("Buttton clicked");
-    console.log(e);
-    $('.visi').empty();
-});
+ $('#btn-clear').on("click", function () {
+        alert("yo");
+    });
 
 
 
