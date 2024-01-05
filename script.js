@@ -3,6 +3,8 @@ let inputForm = $('#input-form');
 
 const inputFormBtn = $('#btn');
 const nameStore = [];
+let nameStoreValueItem;
+let nameStoreValueItemToCheck;
 
 
 
@@ -16,6 +18,8 @@ inputFormBtn.on("click", function (){
     if(inputFormValue.length > 0){
         nameStore.push(inputFormValue);
         console.log(nameStore);
+        nameStoreValueItemToCheck = itemInNameStore();
+        console.log("nameStoreValueItemToCheck is: "+nameStoreValueItemToCheck)
         $('#workers-data-list').append("<div class='delete-update' style='display:flex; justify-content:space-between; margin-bottom:10px'><span>"+inputFormValue+"</span><span><button  class='btn-update' style='margin-right:10px;'>Update</button><button class='btn-delete'  onclick='deleteMe(this)'>Delete</button></span></div>");
     } else {
         let statcNotice = "You entered nothing!!";
@@ -23,28 +27,54 @@ inputFormBtn.on("click", function (){
     }
 });
 
-itemInNameStore();
+
 
 function itemInNameStore () {
     for(i = 0; i  < nameStore.length; i++){
-        console.log("The index of "+nameStore[i]+ " item is "+ i);
+        nameStoreValueItem = nameStore[i];
     }
+    return nameStoreValueItem;
 }
 
 
 
-// function deleteMe (btnstate) {
-//     let deleteBtns = document.querySelector(".delete-update");
-//     deleteBtns.parentNode.removeChild(deleteBtns);
-//     if(nameStore.length > 0){
-//         for(let i = 0; i < nameStore.length; i++){
-//            const indexOfNameStore = nameStore.indexOf(...nameStore[i]);
-//            console.log("index to be removed: " +indexOfNameStore);
-//            const valueOfNameStore = nameStore.slice(indexOfNameStore, nameStore[indexOfNameStore]);
-//             console.log(nameStore);
-//         }
-//     }
-// }
+
+function deleteMe (btnstate) {
+    let deleteBtns = document.querySelector(".delete-update");
+    deleteBtns.parentNode.removeChild(deleteBtns);
+
+    console.log(nameStoreValueItemToCheck);
+    let lala = nameStore.indexOf(nameStoreValueItemToCheck);
+    console.log("lala index: "+lala);
+    nameStore.splice(lala, 1);
+
+    
+
+    console.log(nameStore);
+
+    for(i = 0; i < nameStore.length; i++){
+        switch (nameStore[i]) {
+            case 0:
+                nameStore.shift();
+                console.log(nameStore);
+                break;
+            default:
+                break;
+        }
+    }
+
+
+
+
+    // if(nameStore.length > 0){
+    //     for(let i = 0; i < nameStore.length; i++){
+    //        const indexOfNameStore = nameStore.indexOf(...nameStore[i]);
+    //        console.log("index to be removed: " +indexOfNameStore);
+    //        const valueOfNameStore = nameStore.slice(indexOfNameStore, nameStore[indexOfNameStore]);
+    //         console.log(nameStore);
+    //     }
+    // }
+}
 
 
 
