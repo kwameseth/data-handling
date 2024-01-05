@@ -23,19 +23,28 @@ inputFormBtn.on("click", function (){
     }
 });
 
+itemInNameStore();
 
-function deleteMe (btnstate) {
-    let deleteBtns = document.querySelector(".delete-update");
-    deleteBtns.parentNode.removeChild(deleteBtns);
-    if(nameStore.length > 0){
-        for(let i = 0; i < nameStore.length; i++){
-           const indexOfNameStore = nameStore.indexOf(...nameStore[i]);
-           console.log("index to be removed: " +indexOfNameStore);
-           const valueOfNameStore = nameStore.slice(indexOfNameStore, nameStore[indexOfNameStore]);
-            console.log(nameStore);
-        }
+function itemInNameStore () {
+    for(i = 0; i  < nameStore.length; i++){
+        console.log("The index of "+nameStore[i]+ " item is "+ i);
     }
 }
+
+
+
+// function deleteMe (btnstate) {
+//     let deleteBtns = document.querySelector(".delete-update");
+//     deleteBtns.parentNode.removeChild(deleteBtns);
+//     if(nameStore.length > 0){
+//         for(let i = 0; i < nameStore.length; i++){
+//            const indexOfNameStore = nameStore.indexOf(...nameStore[i]);
+//            console.log("index to be removed: " +indexOfNameStore);
+//            const valueOfNameStore = nameStore.slice(indexOfNameStore, nameStore[indexOfNameStore]);
+//             console.log(nameStore);
+//         }
+//     }
+// }
 
 
 
