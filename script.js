@@ -5,7 +5,7 @@ const inputFormBtn = $('#btn');
 let nameStore = [];
 
 
-let visibilityText = $('.visi');
+
 
 inputFormBtn.on("click", function (){
     let inputFormValue = inputForm.val();

@@ -77,6 +77,7 @@ h2 {
     color:#fff;
     background-color: red;
     border: none;
+    cursor: pointer;
 }
 .btn-update {
     width: 70px;
@@ -85,6 +86,7 @@ h2 {
     color:#fff;
     background-color: rgb(18, 185, 149);
     border: none;
+    cursor: pointer;
 }
 .btn-clear {
     width: 70px;
@@ -93,6 +95,7 @@ h2 {
     color:#fff;
     background-color: rgb(248, 21, 172);
     border: none;
+    cursor: pointer;
 }
 
 footer {
