@@ -2,7 +2,7 @@ let inputForm = $('#input-form');
 
 
 const inputFormBtn = $('#btn');
-let nameStore = [];
+const nameStore = [];
 
 
 
@@ -16,23 +16,26 @@ inputFormBtn.on("click", function (){
     if(inputFormValue.length > 0){
         nameStore.push(inputFormValue);
         console.log(nameStore);
-        $('#workers-data-list').append("<div style='display:flex; justify-content:space-between;'><span>"+inputFormValue+"</span><span><button  class='btn-update' style='margin-right:10px;'>Update</button><button class='btn-delete'>Delete</button></span></div><br>");
+        $('#workers-data-list').append("<div class='delete-update' style='display:flex; justify-content:space-between; margin-bottom:10px'><span>"+inputFormValue+"</span><span><button  class='btn-update' style='margin-right:10px;'>Update</button><button class='btn-delete'  onclick='deleteMe(this)'>Delete</button></span></div>");
     } else {
         let statcNotice = "You entered nothing!!";
         $('#workers-data-list').append("<div onclick='this.remove()' class='visi' style='display:flex; justify-content:space-between;'><span>"+statcNotice+"</span><span id='btn-clear'><button  class='btn-clear' >Clear</button></span></div>");      
     }
 });
 
-// function btnClear () {
-//     let clearBtn = $('#workers-data-list .visi #btn-clear');
-//     let line = $(".visi")
-//         clearBtn.text("Clear All");
-//         clearBtn.click(function () { 
-//             this.remove();
-//         }); 
-// }
 
-
+function deleteMe (btnstate) {
+    let deleteBtns = document.querySelector(".delete-update");
+    deleteBtns.parentNode.removeChild(deleteBtns);
+    if(nameStore.length > 0){
+        for(let i = 0; i < nameStore.length; i++){
+           const indexOfNameStore = nameStore.indexOf(...nameStore[i]);
+           console.log("index to be removed: " +indexOfNameStore);
+           const valueOfNameStore = nameStore.slice(indexOfNameStore, nameStore[indexOfNameStore]);
+            console.log(nameStore);
+        }
+    }
+}
 
 
 
