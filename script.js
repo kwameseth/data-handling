@@ -1,90 +1,52 @@
-let inputForm = $('#input-form');
+// variables declaration
+let nameStore = [];
 
+const inputForm = document.getElementById('input-form');
+const inputFormBtn = document.getElementById('btn');
+const divCount = document.querySelector('#divCount');
+divCount.style.color = 'green';
+inputForm.style.color = '#3666f5';
+const maxCharacter = 15;
+// inputForm.maxLength = maxCharacter;
 
-const inputFormBtn = $('#btn');
-const nameStore = [];
-let nameStoreValueItem;
-let nameStoreValueItemToCheck;
+inputForm.addEventListener('keyup', function(){
+    const showCounterOfText = maxCharacter - this.value.length;
+    divCount.innerText = "Characters left: " + showCounterOfText;
+    console.log(showCounterOfText);
 
-
-
-
-
-inputFormBtn.on("click", function (){
-    let inputFormValue = inputForm.val();
-   
-    // $('#workers-data-list').show();
-    
-    if(inputFormValue.length > 0){
-        nameStore.push(inputFormValue);
-        console.log(nameStore);
-        nameStoreValueItemToCheck = itemInNameStore();
-        console.log("nameStoreValueItemToCheck is: "+nameStoreValueItemToCheck)
-        $('#workers-data-list').append("<div class='delete-update' style='display:flex; justify-content:space-between; margin-bottom:10px'><span>"+inputFormValue+"</span><span><button  class='btn-update' style='margin-right:10px;'>Update</button><button class='btn-delete'  onclick='deleteMe(this)'>Delete</button></span></div>");
-    } else {
-        let statcNotice = "You entered nothing!!";
-        $('#workers-data-list').append("<div onclick='this.remove()' class='visi' style='display:flex; justify-content:space-between;'><span>"+statcNotice+"</span><span id='btn-clear'><button  class='btn-clear' >Clear</button></span></div>");      
+    if(showCounterOfText < 0){
+        styleFormAndBtn('#d3d3d3', true,'#d3d3d3', '#3666f5');
     }
+
+    else if(showCounterOfText <= 3){
+        styleFormAndBtn('red', false,'#3666f5', '#3666f5');
+    }
+
+    else if(showCounterOfText <= 6){
+        styleFormAndBtn('#977316', false,'#3666f5', '#3666f5');
+    }
+
+    else {
+        divCount.style.color = 'green';
+        inputFormBtn.style.backgroundColor = '#3666f5';
+        inputForm.style.color = '#3666f5';
+    }
+ 
 });
 
+function styleFormAndBtn(textCountColor, disabedBool, backGroundColor, textColor){
+    divCount.style.color = textCountColor;
+    inputFormBtn.disabled = disabedBool;
+    inputFormBtn.style.backgroundColor = backGroundColor;
+    inputForm.style.color = textColor;
 
-
-function itemInNameStore () {
-    for(i = 0; i  < nameStore.length; i++){
-        nameStoreValueItem = nameStore[i];
-    }
-    return nameStoreValueItem;
 }
 
-
-
-
-function deleteMe (btnstate) {
-    let deleteBtns = document.querySelector(".delete-update");
-    deleteBtns.parentNode.removeChild(deleteBtns);
-
-    console.log(nameStoreValueItemToCheck);
-    let lala = nameStore.indexOf(nameStoreValueItemToCheck);
-    for (i = 0; i < nameStore.length; i++){
-        if(nameStore[i] == lala){
-            console.log("lala index: "+lala);
-            nameStore.splice(lala, 0);
-            break;
-        }
-        // else if(nameStore.length - 1 == lala){
-        //     nameStore.pop();
-        // }
-        
-    }
-    
+function saveForm(){
+    let inputFormInfo = inputForm.value;
+    nameStore.push(inputFormInfo);
     console.log(nameStore);
-
-    for(i = 0; i < nameStore.length; i++){
-        switch (nameStore[i]) {
-            case 0:
-                nameStore.shift();
-                console.log(nameStore);
-                break;
-            default:
-                break;
-        }
-    }
-
-
-
-
-    // if(nameStore.length > 0){
-    //     for(let i = 0; i < nameStore.length; i++){
-    //        const indexOfNameStore = nameStore.indexOf(...nameStore[i]);
-    //        console.log("index to be removed: " +indexOfNameStore);
-    //        const valueOfNameStore = nameStore.slice(indexOfNameStore, nameStore[indexOfNameStore]);
-    //         console.log(nameStore);
-    //     }
-    // }
-    console.log("final nameStore: " +nameStore);
 }
-
-
 
 
 
