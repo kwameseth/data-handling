@@ -185,10 +185,26 @@ footer {
         width: 80% !important;
         margin: 20px auto !important; 
      }
+    #btn {
+        display: block;
+        width: 50%;
+        margin: 0 auto;
+    }
   
   #input-form{
-    width: 10rem;
-    margin-right: 10px;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+ }
+  #input-form-age{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+ }
+  #input-form-gender{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
  }
 
 }
@@ -230,8 +246,9 @@ footer {
     /* margin-left: 5px !important; */
  } 
  #input-form{
+    display: block;
     width: 11rem !important;
-    margin-right: 10px !important;
+    margin-bottom: 10px !important;
  }
 
 }
