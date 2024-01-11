@@ -35,9 +35,10 @@ h2 {
 }
 
 .form {
-    margin-bottom: 20px;
-  
+    padding: 10px;
+    margin-bottom: 20px; 
 }
+
 #input-form {
     width: 10rem;
     height: 25px;
@@ -132,123 +133,3 @@ footer {
 }
 
 /*Media Queries*/
-@media only screen and (max-width: 835px) {
-    h1 {
-        font-size: 45px;
-    }
-  }
-  @media only screen and (max-width: 626px) {
-    h1 {
-        font-size: 40px;
-    }
-  }
-  #input-form{
-    width: 16rem;
-    height: 23px;
-  }
-  #btn{
-    width: 4rem;
-    height: 38px;
-    
-  }
- 
-  @media only screen and (max-width: 570px) {
-    h1 {
-        font-size: 38px;
-    }
-
-    .form {
-        width: 80%;
-        margin: 0 auto;
-        margin-bottom: 20px; 
-     }
-
-    }
-     @media only screen and (max-width: 528px) {
-        h1 {
-            font-size: 33px;
-      }
-      .form {
-        width: 75% !important;
-        margin: 20px auto !important; 
-     }
-     #input-form{
-        width: 14rem;
-        margin-right: 20px;
-     }
-  }
- @media only screen and (max-width: 474px) {
-    h1 {
-        font-size: 28px;
-    }
-    .form {
-        width: 80% !important;
-        margin: 20px auto !important; 
-     }
-    #btn {
-        display: block;
-        width: 50%;
-        margin: 0 auto;
-    }
-  
-  #input-form{
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
- }
-  #input-form-age{
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
- }
-  #input-form-gender{
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
- }
-
-}
- @media only screen and (max-width: 443px) {
-    h1 {
-        font-size: 25px;
-    }
-  
-  .form {
-    width: 90% !important;
-    margin: 20px 5px !important; 
-    margin-left: 20px !important;
- } 
- }
- @media only screen and (max-width: 394px) {
-    h1 {
-        font-size: 25px;
-    }
-  
-  .form {
-    width: 90% !important;
-    margin: 20px 5px !important; 
-    margin-left: 20px !important;
- } 
- /* #input-form{
-    width: 11rem;
-    margin-right: 20px;
- } */
-
-}
- @media only screen and (max-width: 358px) {
-    h1 {
-        font-size: 25px;
-    }
-  
-  .form {
-    width: 100% !important;
-    margin: 20px 5px !important; 
-    /* margin-left: 5px !important; */
- } 
- #input-form{
-    display: block;
-    width: 11rem !important;
-    margin-bottom: 10px !important;
- }
-
-}
