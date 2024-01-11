@@ -15,7 +15,7 @@ body{
     background-color: #fff;
     padding: 20px;
     border-radius: 7px;
-    box-shadow: 2px 2px 2px #ece2e2cc;
+    box-shadow: 0px 25px 25px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
@@ -39,12 +39,34 @@ h2 {
   
 }
 #input-form {
-    width: 20rem;
+    width: 10rem;
     height: 25px;
     margin-right: 30px;
     border: 2px solid #B4BDFF;
     padding: 5px 10px;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    border-radius: 7px;
+    outline: none;
+    background-color: #f7f7f7;    
+}
+#input-form-age {
+    width: 10rem;
+    height: 25px;
+    margin-right: 30px;
+    border: 2px solid #B4BDFF;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 7px;
+    outline: none;
+    background-color: #f7f7f7;    
+}
+#input-form-gender {
+    width: 10rem;
+    height: 25px;
+    margin-right: 30px;
+    border: 2px solid #B4BDFF;
+    padding: 5px 10px;
+    font-size: 0.9rem;
     border-radius: 7px;
     outline: none;
     background-color: #f7f7f7;    

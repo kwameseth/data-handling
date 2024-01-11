@@ -5,6 +5,9 @@ const inputForm = document.getElementById('input-form');
 const inputFormBtn = document.getElementById('btn');
 const divCount = document.querySelector('#divCount');
 
+const inputFormAge = document.getElementById('input-form-age');
+const inputFormGender = document.getElementById('input-form-gender');
+
 
 divCount.style.color = 'green';
 inputForm.style.color = '#3666f5';
@@ -50,10 +53,14 @@ function styleFormAndBtn(textCountColor, disabedBool, backGroundColor, textColor
 function saveForm(){
     const id = '' + new Date().getTime();
     const inputFormInfo = inputForm.value;
+    const inputFormAgeInfo = inputFormAge.value;
+    const inputFormGenderInfo = inputFormGender.value;
     
     nameStore.push({
         SN: id,
-        dataName: inputFormInfo
+        dataName: inputFormInfo,
+        age: inputFormAgeInfo,
+        gender: inputFormGenderInfo,
     });
     console.log(nameStore);
 
@@ -65,17 +72,17 @@ function renderDetails() {
 
     nameStore.forEach(function (nameSaved) {
         if(nameSaved.dataName == ""){
-            renderDynamics('Nothing entered', 'clear', nameSaved.SN);
+            renderDynamics('Nothing entered', nameSaved.age, nameSaved.gender, 'clear', nameSaved.SN);
 
         } else {
-           renderDynamics(nameSaved.dataName, 'delete', nameSaved.SN);
+           renderDynamics(nameSaved.dataName, nameSaved.age, nameSaved.gender, 'delete', nameSaved.SN);
         }
     });   
 }
 
-function renderDynamics (storedData, btnName, btnID){
+function renderDynamics (storedDataName,storedDataAge,storedDataGender, btnName, btnID){
     const newDiv = document.createElement('div');
-    newDiv.innerText = storedData;
+    newDiv.innerText = "Full Name: "+storedDataName + "    Age: " +storedDataAge + "    Gender: "+ storedDataGender;
     newDiv.style.marginTop = '10px';
 
     if(btnName == 'clear'){
@@ -119,6 +126,12 @@ function btnDeleteOrClear (e){
     });
     renderDetails();
     console.log(nameStore);
+    if(nameStore.length === 0){
+        const emELement = document.createElement('em');
+        emELement.innerText = "All data deleted successfully!";
+        emELement.style.color = 'green';
+        showDetailsSection.appendChild(emELement);
+    }
 }
 
 
