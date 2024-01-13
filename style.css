@@ -127,6 +127,10 @@ footer {
         width: 95%;
     }
 
+    #divCount {
+        margin-top: 5px;
+    }
+
     #input-form-age, #input-form-gender {
         /* width: 14rem; */
         margin-right: 0;
