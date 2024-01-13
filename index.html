@@ -20,10 +20,18 @@
         <div class="form">
 
            <!-- input form here using span for the input field and save button. Give the input form and button different ids -->
-          <div> <span><input id="input-form" type="text" placeholder="Enter your name..."></span></div> <div id="divCount">Characters left: 15</div>
+
+          <div id="input-count-div"> <span><input id="input-form" type="text" placeholder="Enter your name..."></span>
+                <span id="divCount">Characters left: 15 </span>
+          </div> 
+
+          <div id="age-n-gender-div">
           <span><input id="input-form-age" type="text" maxlength="2" placeholder="Enter your age here..."></span> 
           <span><input id="input-form-gender" maxlength="6" type="text" placeholder="Enter your gender..."></span>
           <span><button id="btn" onclick="saveForm()">Save</button></span>
+          </div>
+
+          
           <!-- <div id="divCount">Characters left: 15</div> -->
            
         </div>
