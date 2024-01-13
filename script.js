@@ -21,6 +21,8 @@ inputForm.addEventListener('keyup', function(){
 
     if(showCounterOfText < 0){
         styleFormAndBtn('#d3d3d3', true,'#d3d3d3', '#d3d3d3', 'none');
+        // inputFormAge.disabled = true;
+        // inputFormGender.disabled= true;
     }
 
     else if(showCounterOfText <= 3){
@@ -35,6 +37,8 @@ inputForm.addEventListener('keyup', function(){
         divCount.style.color = 'green';
         inputFormBtn.style.backgroundColor = '#3666f5';
         inputForm.style.color = '#3666f5';
+        // inputFormAge.disabled = false;
+        // inputFormGender.disabled= false;
     }
  
 });
@@ -42,6 +46,8 @@ inputForm.addEventListener('keyup', function(){
 function styleFormAndBtn(textCountColor, disabedBool, backGroundColor, textColor, borderStatus){
     divCount.style.color = textCountColor;
     inputFormBtn.disabled = disabedBool;
+    inputFormAge.disabled = disabedBool;
+    inputFormGender.disabled= disabedBool;
     inputFormBtn.style.backgroundColor = backGroundColor;
     inputForm.style.color = textColor;
     inputForm.style.border = borderStatus;
