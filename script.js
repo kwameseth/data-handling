@@ -6,13 +6,35 @@ const inputFormBtn = document.getElementById('btn');
 const divCount = document.querySelector('#divCount');
 
 const inputFormAge = document.getElementById('input-form-age');
-const inputFormGender = document.getElementById('input-form-gender');
+// const inputFormGenderMale = document.getElementById('input-form-gender-male');
+// const inputFormGenderFemale = document.getElementById('input-form-gender-female');
+const inputFormGenders = document.querySelectorAll("input[name='gender']");
 
-
+console.log(inputFormGenders);
+// inputFormBtn.disabled = false;
 divCount.style.color = 'green';
 inputForm.style.color = '#3666f5';
 const maxCharacter = 15;
 const showDetailsSection = document.getElementById('workers-data-list');
+
+
+let  inputFormGenderSelect = () => {
+    let selectedGender =  document.querySelector("input[name='gender']").value;
+     console.log(selectedGender);
+ }
+
+inputFormGenders.forEach(inputFormGender => {
+    inputFormGender.addEventListener("change", inputFormGenderSelect);
+});
+
+
+// function capitalize(genderName){
+//     let capitalizeWord = genderName.slice(0,1).toUpperCase() + genderName.slice(1, genderName.length).toLowerCase();
+//     console.log(capitalizeWord);  
+//     return capitalizeWord;
+// }
+
+
 
 
 inputForm.addEventListener('keyup', function(){
@@ -43,56 +65,117 @@ function styleFormAndBtn(textCountColor, disabedBool, backGroundColor, textColor
     divCount.style.color = textCountColor;
     inputFormBtn.disabled = disabedBool;
     inputFormAge.disabled = disabedBool;
-    inputFormGender.disabled= disabedBool;
+    // inputFormGender.disabled= disabedBool;
     inputFormBtn.style.backgroundColor = backGroundColor;
     inputForm.style.color = textColor;
     inputForm.style.border = borderStatus;
 
 }
 
+// inputFormGender.addEventListener("keyup", function(){
+      
+//     if(this.value[0] !== "m" || this.value[0] !== "M" ){
+//         inputFormBtn.disabled = true;
+//         inputFormBtn.style.backgroundColor = "gray";
+//         console.log(this.value[0]);
+//     }
+
+//     else {
+//         inputFormBtn.disabled = false;
+//         inputFormBtn.style.backgroundColor = '#3666f5';
+//     }
+//     inputFormGender.disabled = false;
+//     console.log(this.value[0]);
+// })
 
 
 function saveForm(){
     const id = '' + new Date().getTime();
     const inputFormInfo = inputForm.value;
     const inputFormAgeInfo = inputFormAge.value;
-    const inputFormGenderInfo = inputFormGender.value;
+
+  
+
+
+    // const inputFormGenderMaleInfo = inputFormGenderMale.value;
+    // console.log(inputFormGenderMaleInfo)
     
-    nameStore.push({
-        SN: id,
-        dataName: inputFormInfo,
-        age: inputFormAgeInfo,
-        gender: inputFormGenderInfo,
-    });
+    // const inputFormGenderFemaleInfo = inputFormGenderFemale.value;
+    // console.log(inputFormGenderFemaleInfo)
+    
+    // if ( inputFormGenderFemaleInfo == "Male"){
+    //     nameStore.push({
+    //         SN: id,
+    //         dataName: inputFormInfo,
+    //         age: inputFormAgeInfo,
+    //         gender: inputFormGenderFemaleInfo,
+    //     });
+    // }
+   
+        nameStore.push({
+            SN: id,
+            dataName: inputFormInfo,
+            age: inputFormAgeInfo,
+            gender: selectedGender,
+        });
+        
+
+    
     console.log(nameStore);
 
     renderDetails();
 }
 
+
 function renderDetails() {
     document.getElementById('workers-data-list').innerHTML = '';
 
     nameStore.forEach(function (nameSaved) {
-        if(nameSaved.dataName == ""){
-            renderDynamics('Nothing entered', nameSaved.age, nameSaved.gender, 'clear', nameSaved.SN);
-
-        } else {
+        if(nameSaved.dataName == "" && nameSaved.age == ""){
+            renderDynamics('Nothing entered', "Wrong Input", nameSaved.gender, 'clear', nameSaved.SN);
+        } else if (nameSaved.age == ""){
+            renderDynamics(nameSaved.dataName, "Wrong Input", nameSaved.gender, 'clear', nameSaved.SN);
+        }
+         else if (nameSaved.gender !== "Male" || nameSaved.gender  !== "Female"){
+            renderDynamics(nameSaved.dataName, nameSaved.age, "Wrong Input, case sensitive: " +nameSaved.gender, 'clear', nameSaved.SN);
+        }
+        else {
            renderDynamics(nameSaved.dataName, nameSaved.age, nameSaved.gender, 'delete', nameSaved.SN);
         }
+
+
+        // switch (nameSaved) {
+        //     case nameSaved.dataName == "" && nameSaved.age == "":
+        //         renderDynamics('Nothing entered', "Wrong Input", nameSaved.gender, 'clear', nameSaved.SN);
+        //         break;
+        //     case nameSaved.age == "":
+        //         renderDynamics(nameSaved.dataName, "Wrong Input", nameSaved.gender, 'clear', nameSaved.SN);
+        //         break;
+        //     case nameSaved.gender !== "Male":
+        //         renderDynamics(nameSaved.dataName, nameSaved.age, "Wrong Input, case sensitive: " +nameSaved.gender, 'clear', nameSaved.SN);
+        //         break;
+        //     case nameSaved.gender !== "male":
+        //         renderDynamics(nameSaved.dataName, nameSaved.age, "Wrong Input, case sensitive: " +nameSaved.gender, 'clear', nameSaved.SN);
+        //         break;
+        //     case nameSaved.gender !== "Female":
+        //         renderDynamics(nameSaved.dataName, nameSaved.age, "Wrong Input, case sensitive: " +nameSaved.gender, 'clear', nameSaved.SN);
+        //         break;
+        //     case nameSaved.gender !== "female":
+        //         renderDynamics(nameSaved.dataName, nameSaved.age, "Wrong Input, case sensitive: " +nameSaved.gender, 'clear', nameSaved.SN);
+        //         break;
+        //     default:
+        //         renderDynamics(nameSaved.dataName, nameSaved.age, nameSaved.gender, 'delete', nameSaved.SN);
+        //         break;
+        // }
+
+
     });   
 }
 
 function renderDynamics (storedDataName,storedDataAge,storedDataGender, btnName, btnID){
     const newDiv = document.createElement('div');
-    let newSpan = document.createElement('span');
-    // const newLineBreak = document.createElement('br');
-    // newSpan.innerText = "Full Name: "+storedDataName;
-    // newSpan.appendChild(newLineBreak);
-    // newSpan.innerText = "Age: "+storedDataAge;
-    // newSpan.innerHTML = 
-    // newDiv.innerText = <span>"Full Name: "+storedDataName </span>  "    Age: " +storedDataAge + "    Gender: "+ storedDataGender;
-    newDiv.innerHTML = "<span>Full Name: "+storedDataName + "</span><br> <span> Age: " +storedDataAge+" </span><br> <span>Gender: "+ storedDataGender+"</span><br>";
-    newDiv.appendChild(newSpan);
+    // newDiv.innerText = "Full Name: "+storedDataName + "    Age: " +storedDataAge + "    Gender: "+ storedDataGender;
+    newDiv.innerHTML = "<span >Full Name: "+storedDataName + "</span><br> <span> Age: " +storedDataAge+" </span><br> <span>Gender: "+ storedDataGender+"</span><br>";
     newDiv.style.marginTop = '15px';
 
     if(btnName == 'clear'){
