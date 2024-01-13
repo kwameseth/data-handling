@@ -21,8 +21,6 @@ inputForm.addEventListener('keyup', function(){
 
     if(showCounterOfText < 0){
         styleFormAndBtn('#d3d3d3', true,'#d3d3d3', '#d3d3d3', 'none');
-        // inputFormAge.disabled = true;
-        // inputFormGender.disabled= true;
     }
 
     else if(showCounterOfText <= 3){
@@ -37,8 +35,6 @@ inputForm.addEventListener('keyup', function(){
         divCount.style.color = 'green';
         inputFormBtn.style.backgroundColor = '#3666f5';
         inputForm.style.color = '#3666f5';
-        // inputFormAge.disabled = false;
-        // inputFormGender.disabled= false;
     }
  
 });
@@ -88,8 +84,16 @@ function renderDetails() {
 
 function renderDynamics (storedDataName,storedDataAge,storedDataGender, btnName, btnID){
     const newDiv = document.createElement('div');
-    newDiv.innerText = "Full Name: "+storedDataName + "    Age: " +storedDataAge + "    Gender: "+ storedDataGender;
-    newDiv.style.marginTop = '10px';
+    let newSpan = document.createElement('span');
+    // const newLineBreak = document.createElement('br');
+    // newSpan.innerText = "Full Name: "+storedDataName;
+    // newSpan.appendChild(newLineBreak);
+    // newSpan.innerText = "Age: "+storedDataAge;
+    // newSpan.innerHTML = 
+    // newDiv.innerText = <span>"Full Name: "+storedDataName </span>  "    Age: " +storedDataAge + "    Gender: "+ storedDataGender;
+    newDiv.innerHTML = "<span>Full Name: "+storedDataName + "</span><br> <span> Age: " +storedDataAge+" </span><br> <span>Gender: "+ storedDataGender+"</span><br>";
+    newDiv.appendChild(newSpan);
+    newDiv.style.marginTop = '15px';
 
     if(btnName == 'clear'){
         buttonRenderFeatures('#3666f5', btnName, btnID);
@@ -105,7 +109,7 @@ function buttonRenderFeatures(backGroundColor, btnInfo, id){
     newBtn = document.createElement('button');
     newBtn.innerText = btnInfo;
     newBtn.id = id;
-    newBtn.style.marginLeft = '30px';
+    newBtn.style.marginTop = '10px';
     newBtn.style.backgroundColor = backGroundColor;
     newBtn.style.color = '#fff';
     newBtn.style.border = 'none';
