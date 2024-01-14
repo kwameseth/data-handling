@@ -10,8 +10,7 @@ const inputFormAge = document.getElementById('input-form-age');
 // const inputFormGenderFemale = document.getElementById('input-form-gender-female');
 const inputFormGenders = document.querySelectorAll("input[name='gender']");
 
-console.log(inputFormGenders);
-// inputFormBtn.disabled = false;
+
 divCount.style.color = 'green';
 inputForm.style.color = '#3666f5';
 const maxCharacter = 15;
@@ -19,23 +18,21 @@ const showDetailsSection = document.getElementById('workers-data-list');
 
 
 let  inputFormGenderSelect = () => {
-    let selectedGender =  document.querySelector("input[name='gender']").value;
-     console.log(selectedGender);
+    let selectedGender =  document.querySelector("input[name='gender']:checked").value;
+    console.log(selectedGender);
+     return selectedGender;
  }
-
+ 
+ 
 inputFormGenders.forEach(inputFormGender => {
     inputFormGender.addEventListener("change", inputFormGenderSelect);
 });
-
 
 // function capitalize(genderName){
 //     let capitalizeWord = genderName.slice(0,1).toUpperCase() + genderName.slice(1, genderName.length).toLowerCase();
 //     console.log(capitalizeWord);  
 //     return capitalizeWord;
 // }
-
-
-
 
 inputForm.addEventListener('keyup', function(){
     const showCounterOfText = maxCharacter - this.value.length;
@@ -93,34 +90,14 @@ function saveForm(){
     const id = '' + new Date().getTime();
     const inputFormInfo = inputForm.value;
     const inputFormAgeInfo = inputFormAge.value;
-
-  
-
-
-    // const inputFormGenderMaleInfo = inputFormGenderMale.value;
-    // console.log(inputFormGenderMaleInfo)
-    
-    // const inputFormGenderFemaleInfo = inputFormGenderFemale.value;
-    // console.log(inputFormGenderFemaleInfo)
-    
-    // if ( inputFormGenderFemaleInfo == "Male"){
-    //     nameStore.push({
-    //         SN: id,
-    //         dataName: inputFormInfo,
-    //         age: inputFormAgeInfo,
-    //         gender: inputFormGenderFemaleInfo,
-    //     });
-    // }
-   
+ 
         nameStore.push({
             SN: id,
             dataName: inputFormInfo,
             age: inputFormAgeInfo,
-            gender: selectedGender,
+            gender: inputFormGenderSelect(),
         });
-        
 
-    
     console.log(nameStore);
 
     renderDetails();
@@ -132,43 +109,16 @@ function renderDetails() {
 
     nameStore.forEach(function (nameSaved) {
         if(nameSaved.dataName == "" && nameSaved.age == ""){
-            renderDynamics('Nothing entered', "Wrong Input", nameSaved.gender, 'clear', nameSaved.SN);
-        } else if (nameSaved.age == ""){
-            renderDynamics(nameSaved.dataName, "Wrong Input", nameSaved.gender, 'clear', nameSaved.SN);
+            renderDynamics('Nothing entered', "Wrong Input", nameSaved.gender, 'Clear', nameSaved.SN);
+        } else if (nameSaved.age == "" || nameSaved.age < 1){
+            renderDynamics(nameSaved.dataName, "Wrong Input", nameSaved.gender, 'Clear', nameSaved.SN);
         }
-         else if (nameSaved.gender !== "Male" || nameSaved.gender  !== "Female"){
-            renderDynamics(nameSaved.dataName, nameSaved.age, "Wrong Input, case sensitive: " +nameSaved.gender, 'clear', nameSaved.SN);
+         else if (nameSaved.dataName == ""){
+            renderDynamics('Nothing entered', nameSaved.age, nameSaved.gender, 'Clear', nameSaved.SN);
         }
         else {
-           renderDynamics(nameSaved.dataName, nameSaved.age, nameSaved.gender, 'delete', nameSaved.SN);
+           renderDynamics(nameSaved.dataName, nameSaved.age, nameSaved.gender, 'Delete', nameSaved.SN);
         }
-
-
-        // switch (nameSaved) {
-        //     case nameSaved.dataName == "" && nameSaved.age == "":
-        //         renderDynamics('Nothing entered', "Wrong Input", nameSaved.gender, 'clear', nameSaved.SN);
-        //         break;
-        //     case nameSaved.age == "":
-        //         renderDynamics(nameSaved.dataName, "Wrong Input", nameSaved.gender, 'clear', nameSaved.SN);
-        //         break;
-        //     case nameSaved.gender !== "Male":
-        //         renderDynamics(nameSaved.dataName, nameSaved.age, "Wrong Input, case sensitive: " +nameSaved.gender, 'clear', nameSaved.SN);
-        //         break;
-        //     case nameSaved.gender !== "male":
-        //         renderDynamics(nameSaved.dataName, nameSaved.age, "Wrong Input, case sensitive: " +nameSaved.gender, 'clear', nameSaved.SN);
-        //         break;
-        //     case nameSaved.gender !== "Female":
-        //         renderDynamics(nameSaved.dataName, nameSaved.age, "Wrong Input, case sensitive: " +nameSaved.gender, 'clear', nameSaved.SN);
-        //         break;
-        //     case nameSaved.gender !== "female":
-        //         renderDynamics(nameSaved.dataName, nameSaved.age, "Wrong Input, case sensitive: " +nameSaved.gender, 'clear', nameSaved.SN);
-        //         break;
-        //     default:
-        //         renderDynamics(nameSaved.dataName, nameSaved.age, nameSaved.gender, 'delete', nameSaved.SN);
-        //         break;
-        // }
-
-
     });   
 }
 
@@ -178,13 +128,28 @@ function renderDynamics (storedDataName,storedDataAge,storedDataGender, btnName,
     newDiv.innerHTML = "<span >Full Name: "+storedDataName + "</span><br> <span> Age: " +storedDataAge+" </span><br> <span>Gender: "+ storedDataGender+"</span><br>";
     newDiv.style.marginTop = '15px';
 
-    if(btnName == 'clear'){
+    if(btnName == 'Clear'){
         buttonRenderFeatures('#3666f5', btnName, btnID);
     }
     else {
         buttonRenderFeatures('red', btnName, btnID);
+        let updateBtnElement = document.createElement('button');
+        updateBtnElement.innerText = "Update";
+        updateBtnElement.id = btnID;
+        console.log(updateBtnElement.id);
+        updateBtnElement.style.backgroundColor = 'green';
+        updateBtnElement.style.marginRight = '10px';
+        updateBtnElement.style.color = '#fff';
+        updateBtnElement.style.border = 'none';
+        updateBtnElement.style.padding = '5px 20px';
+        updateBtnElement.style.borderRadius = '4px';
+        updateBtnElement.style.cursor = 'pointer';
+        updateBtnElement.style.fontSize = '13px';
+        updateBtnElement.onclick = btnUpdate;
+        newDiv.appendChild(updateBtnElement);
     }
     newDiv.appendChild(newBtn);
+    
     showDetailsSection.appendChild(newDiv);
 }
 
@@ -200,8 +165,14 @@ function buttonRenderFeatures(backGroundColor, btnInfo, id){
     newBtn.style.borderRadius = '4px';
     newBtn.style.cursor = 'pointer';
     newBtn.style.fontSize = '13px';
-
     newBtn.onclick = btnDeleteOrClear;
+    
+}
+
+
+function btnUpdate(e){
+    let updateID = e.target.id;
+    console.log(updateID);
     
 }
 

@@ -63,16 +63,8 @@ h2 {
     outline: none;
     background-color: #f7f7f7;    
 }
-#input-form-gender {
-    width: 10rem;
-    height: 25px;
+#gender-span {
     margin-right: 30px;
-    border: 2px solid #B4BDFF;
-    padding: 5px 10px;
-    font-size: 0.9rem;
-    border-radius: 7px;
-    outline: none;
-    background-color: #f7f7f7;    
 }
 
 #btn {
@@ -131,9 +123,12 @@ footer {
         margin-top: 5px;
     }
 
-    #input-form-age, #input-form-gender {
-        /* width: 14rem; */
+    #input-form-age {
         margin-right: 0;
+    }
+
+    #gender-span {
+        margin-bottom: 10px !important;
     }
 
     #age-n-gender-div {
@@ -172,6 +167,9 @@ footer {
         width: 35% ;
         /* margin: 0 auto; */
         
+    }
+    #gender-span {
+        margin-bottom: 10px !important;
     }
  }
 
