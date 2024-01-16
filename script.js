@@ -54,7 +54,7 @@ inputForm.addEventListener('keyup', function(){
         inputFormBtn.style.backgroundColor = '#3666f5';
         inputForm.style.color = '#3666f5';
     }
-    inputForm.value = inputForm.value.replace(/[^a-zA-Z0-9@]+/, '');
+    this.value = this.value.replace(/[^a-zA-Z]+/, '');
 });
 
 function styleFormAndBtn(textCountColor, disabedBool, backGroundColor, textColor, borderStatus){
