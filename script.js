@@ -10,6 +10,7 @@ const inputFormAge = document.getElementById('input-form-age');
 const inputFormGenders = document.querySelectorAll("input[name='gender']");
 
 
+
 divCount.style.color = 'green';
 inputForm.style.color = '#3666f5';
 const maxCharacter = 15;
@@ -18,7 +19,7 @@ const showDetailsSection = document.getElementById('workers-data-list');
 
 let  inputFormGenderSelect = () => {
     let selectedGender =  document.querySelector("input[name='gender']:checked").value;
-    console.log(selectedGender);
+    // console.log(selectedGender);
      return selectedGender;
  }
  
@@ -76,14 +77,25 @@ function saveForm(){
     const id = '' + new Date().getTime();
     const inputFormInfo = inputForm.value;
     const inputFormAgeInfo = inputFormAge.value;
- 
+
+    if(inputFormAgeInfo >= 60){
         nameStore.push({
             SN: id,
             dataName: inputFormInfo,
             age: inputFormAgeInfo,
             gender: inputFormGenderSelect(),
+            status: "Retired",
         });
 
+    } else {
+        nameStore.push({
+            SN: id,
+            dataName: inputFormInfo,
+            age: inputFormAgeInfo,
+            gender: inputFormGenderSelect(),
+            status: "Active",
+        });
+    }
     console.log(nameStore);
     inputForm.value = "";
     inputFormAge.value = "";
@@ -97,24 +109,44 @@ function renderDetails() {
 
     nameStore.forEach(function (nameSaved) {
         if(nameSaved.dataName == "" && nameSaved.age == ""){
-            renderDynamics('Nothing entered', "Wrong Input", nameSaved.gender, 'Clear', nameSaved.SN);
+            renderDynamics('Nothing entered', "Wrong Input", nameSaved.gender, 'Clear','Classical Ghost', nameSaved.SN);
+            // theStatus("unknown");
         } else if (nameSaved.age == "" || nameSaved.age < 1){
-            renderDynamics(nameSaved.dataName, "Wrong Input", nameSaved.gender, 'Clear', nameSaved.SN);
+            renderDynamics(nameSaved.dataName, "Wrong Input", nameSaved.gender, 'Clear','Age data not clear', nameSaved.SN);
+            // theStatus("unknown");
         }
          else if (nameSaved.dataName == ""){
-            renderDynamics('Nothing entered', nameSaved.age, nameSaved.gender, 'Clear', nameSaved.SN);
+            renderDynamics('Nothing entered', nameSaved.age, nameSaved.gender, 'Clear','Ghost', nameSaved.SN);
+            // console.log(nameSaved.status);
+            // theStatus(nameSaved.status);
         }
         else {
-           renderDynamics(nameSaved.dataName, nameSaved.age, nameSaved.gender, 'Delete', nameSaved.SN);
+           renderDynamics(nameSaved.dataName, nameSaved.age, nameSaved.gender, 'Delete', nameSaved.status, nameSaved.SN);
+        //    console.log(nameSaved.status);
+        //    theStatus(nameSaved.status);
         }
-    });   
+    }); 
+    
 }
 
-function renderDynamics (storedDataName,storedDataAge,storedDataGender, btnName, btnID){
+// function theStatus(stat){
+//     if(stat == "Retired"){
+//         stat.style.color = 'pink';
+//        } else {
+//         stat.style.color = 'pink';
+//        }
+// }
+
+function renderDynamics (storedDataName,storedDataAge,storedDataGender, btnName, storedStatus, btnID){
     const newDiv = document.createElement('div');
-    // newDiv.innerText = "Full Name: "+storedDataName + "    Age: " +storedDataAge + "    Gender: "+ storedDataGender;
-    newDiv.innerHTML = "<span >Full Name: "+storedDataName + "</span><br> <span> Age: " +storedDataAge+" </span><br> <span>Gender: "+ storedDataGender+"</span><br>";
+    newDiv.innerHTML = "<span >Full Name: "+storedDataName + "</span><br> <span> Age: " +storedDataAge+" </span><br> <span>Gender: "+ storedDataGender+"</span><br> <span id='status'>Status: " +storedStatus+ "</sapn> <br>";
     newDiv.style.marginTop = '15px';
+
+    // const innerStatus = document.getElementById('status');
+    // console.log(innerStatus);
+    // let innerStatusText= innerStatus.value;
+
+    // theStatus(innerStatusText);
 
     if(btnName == 'Clear'){
         buttonRenderFeatures('#3666f5', btnName, btnID);
@@ -135,6 +167,7 @@ function renderDynamics (storedDataName,storedDataAge,storedDataGender, btnName,
         updateBtnElement.onclick = btnUpdate;
         newDiv.appendChild(updateBtnElement);
     }
+    
     newDiv.appendChild(newBtn);
     
     showDetailsSection.appendChild(newDiv);
