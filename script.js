@@ -139,7 +139,6 @@ function renderDynamics (storedDataName,storedDataAge,storedDataGender, btnName,
         let updateBtnElement = document.createElement('button');
         updateBtnElement.innerText = "Update";
         updateBtnElement.id = btnID;
-        console.log(updateBtnElement.id);
         updateBtnElement.style.backgroundColor = 'green';
         updateBtnElement.style.marginRight = '10px';
         updateBtnElement.style.color = '#fff';
@@ -172,7 +171,7 @@ function buttonRenderFeatures(backGroundColor, btnInfo, id){
     
 }
 
-
+// update button function
 function btnUpdate(e){
     let updateID = e.target.id;
     let nameStoreUpdate = [];
@@ -180,7 +179,7 @@ function btnUpdate(e){
   nameStoreUpdate = nameStore.find((dataSaved) => {
         return  dataSaved.SN === updateID;
     });
-    console.log(nameStoreUpdate);
+    // console.log(nameStoreUpdate);
     inputForm.value = nameStoreUpdate.dataName; 
     inputFormAge.value = nameStoreUpdate.age; 
 
@@ -192,6 +191,7 @@ function btnUpdate(e){
             return true;
         }
     })
+    console.log(nameStore);
 
     renderDetails();
     if(nameStore.length === 0){
@@ -204,10 +204,11 @@ function btnUpdate(e){
     
 }
 
+
+// delete button function
 function btnDeleteOrClear (e){
     const btnID = e.target //to get button details
     const btnIDNumber = btnID.id;
-
 
     nameStore = nameStore.filter((names) => {
         if(names.SN === btnIDNumber){

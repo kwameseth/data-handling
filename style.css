@@ -124,8 +124,8 @@ footer {
     }
 
     #divCount {
-        margin-top: 15px;
-        /* margin-bottom: 5px; */
+        margin-top: -5px !important;
+        margin-bottom: 5px;
     }
 
     #input-form-age {
@@ -175,6 +175,10 @@ footer {
     }
     #gender-span {
         margin-bottom: 10px !important;
+    }
+
+    #btn {
+        margin-top: 10px;
     }
  }
 
