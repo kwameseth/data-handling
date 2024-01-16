@@ -30,12 +30,19 @@
 
           <div id="age-n-gender-div">
             <span>
-                <input id="input-form-age" type="number" maxlength="2" placeholder="Enter your age..." required>
+                <!-- <input id="input-form-age" type="text" pattern="\d*" maxlength="3" placeholder="Enter your age..." required> -->
+                <input name="age" 
+                       id="input-form-age" 
+                       placeholder="Enter your age..." 
+                       oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                       type = "number"
+                       maxlength = "3"
+                />
             </span> 
             <span id="gender-span"> <label for="Male">Male:</label>
-                <input  maxlength="6" type="radio"  value="Male"  name="gender">
+                <input   type="radio"  value="Male"  name="gender">
                 <label for="Female">Female:</label>
-                <input  maxlength="6" type="radio"  value="Female"  name="gender">
+                <input   type="radio"  value="Female"  name="gender">
             </span>
             <span>
                 <button id="btn" onclick="saveForm()">Save</button>

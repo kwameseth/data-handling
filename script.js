@@ -70,22 +70,6 @@ function styleFormAndBtn(textCountColor, disabedBool, backGroundColor, textColor
 
 }
 
-// inputFormGender.addEventListener("keyup", function(){
-      
-//     if(this.value[0] !== "m" || this.value[0] !== "M" ){
-//         inputFormBtn.disabled = true;
-//         inputFormBtn.style.backgroundColor = "gray";
-//         console.log(this.value[0]);
-//     }
-
-//     else {
-//         inputFormBtn.disabled = false;
-//         inputFormBtn.style.backgroundColor = '#3666f5';
-//     }
-//     inputFormGender.disabled = false;
-//     console.log(this.value[0]);
-// })
-
 
 function saveForm(){
     const id = '' + new Date().getTime();
@@ -102,7 +86,7 @@ function saveForm(){
     console.log(nameStore);
     inputForm.value = "";
     inputFormAge.value = "";
-
+  
     renderDetails();
 }
 
@@ -191,7 +175,7 @@ function btnUpdate(e){
             return true;
         }
     })
-    console.log(nameStore);
+    // console.log(nameStore);
 
     renderDetails();
     if(nameStore.length === 0){
@@ -200,8 +184,6 @@ function btnUpdate(e){
         emELement.style.color = 'green';
         showDetailsSection.appendChild(emELement);
     }
-
-    
 }
 
 
