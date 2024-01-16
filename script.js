@@ -22,9 +22,12 @@ let  inputFormGenderSelect = () => {
      return selectedGender;
  }
  
- 
 inputFormGenders.forEach(inputFormGender => {
     inputFormGender.addEventListener("change", inputFormGenderSelect);
+});
+
+inputFormAge.addEventListener("keyup", function() {
+    this.value = this.value.replace(/[^0-9]+/);
 });
 
 // function capitalize(genderName){
@@ -54,7 +57,7 @@ inputForm.addEventListener('keyup', function(){
         inputFormBtn.style.backgroundColor = '#3666f5';
         inputForm.style.color = '#3666f5';
     }
-    this.value = this.value.replace(/[^a-zA-Z]+/, '');
+    this.value = this.value.replace(/[^a-zA-Z ]+/,'');
 });
 
 function styleFormAndBtn(textCountColor, disabedBool, backGroundColor, textColor, borderStatus){

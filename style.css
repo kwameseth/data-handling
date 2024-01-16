@@ -150,7 +150,7 @@ footer {
 @media (max-width: 575.98px) {
     
     h1 {
-        font-size: 27px;
+        font-size: 1.7rem !important;
     }
     
     #age-n-gender-div {
