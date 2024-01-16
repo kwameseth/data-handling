@@ -2,6 +2,7 @@
 let nameStore = [];
 
 const inputForm = document.getElementById('input-form');
+console.log(inputForm);
 const inputFormBtn = document.getElementById('btn');
 const divCount = document.querySelector('#divCount');
 
@@ -99,6 +100,8 @@ function saveForm(){
         });
 
     console.log(nameStore);
+    inputForm.value = "";
+    inputFormAge.value = "";
 
     renderDetails();
 }
@@ -172,12 +175,37 @@ function buttonRenderFeatures(backGroundColor, btnInfo, id){
 
 function btnUpdate(e){
     let updateID = e.target.id;
-    console.log(updateID);
+    let nameStoreUpdate = [];
+
+  nameStoreUpdate = nameStore.find((dataSaved) => {
+        return  dataSaved.SN === updateID;
+    });
+    console.log(nameStoreUpdate);
+    inputForm.value = nameStoreUpdate.dataName; 
+    inputFormAge.value = nameStoreUpdate.age; 
+
+    nameStore = nameStore.filter((removeItemToUpdate) => {
+        if(removeItemToUpdate.SN === updateID){
+            return false;
+        }
+        else {
+            return true;
+        }
+    })
+
+    renderDetails();
+    if(nameStore.length === 0){
+        const emELement = document.createElement('em');
+        emELement.innerText = "Update in progress..!";
+        emELement.style.color = 'green';
+        showDetailsSection.appendChild(emELement);
+    }
+
     
 }
 
 function btnDeleteOrClear (e){
-    const btnID = e.target //to get butoon details
+    const btnID = e.target //to get button details
     const btnIDNumber = btnID.id;
 
 

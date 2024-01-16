@@ -41,6 +41,10 @@ h2 {
     flex-direction: column;
 }
 
+#divCount {
+    margin-top: 10px;
+}
+
 #input-form {
     width: 10rem;
     height: 25px;
@@ -120,7 +124,8 @@ footer {
     }
 
     #divCount {
-        margin-top: 5px;
+        margin-top: 15px;
+        /* margin-bottom: 5px; */
     }
 
     #input-form-age {
