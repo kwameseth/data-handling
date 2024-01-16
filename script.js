@@ -7,8 +7,6 @@ const inputFormBtn = document.getElementById('btn');
 const divCount = document.querySelector('#divCount');
 
 const inputFormAge = document.getElementById('input-form-age');
-// const inputFormGenderMale = document.getElementById('input-form-gender-male');
-// const inputFormGenderFemale = document.getElementById('input-form-gender-female');
 const inputFormGenders = document.querySelectorAll("input[name='gender']");
 
 
@@ -56,7 +54,7 @@ inputForm.addEventListener('keyup', function(){
         inputFormBtn.style.backgroundColor = '#3666f5';
         inputForm.style.color = '#3666f5';
     }
- 
+    inputForm.value = inputForm.value.replace(/[^a-zA-Z0-9@]+/, '');
 });
 
 function styleFormAndBtn(textCountColor, disabedBool, backGroundColor, textColor, borderStatus){
