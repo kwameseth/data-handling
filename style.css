@@ -124,7 +124,7 @@ footer {
     }
 
     #divCount {
-        margin-top: -5px !important;
+        margin-top: 5px !important;
         margin-bottom: 5px;
     }
 
@@ -150,7 +150,7 @@ footer {
 @media (max-width: 575.98px) {
     
     h1 {
-        font-size: 32px;
+        font-size: 27px;
     }
     
     #age-n-gender-div {
